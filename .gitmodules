@@ -1,0 +1,3 @@
+[submodule "frontend/bug_tracker"]
+	path = frontend/bug_tracker
+	url = https://github.com/ikeodukudu/BugTrackerApplication.git
