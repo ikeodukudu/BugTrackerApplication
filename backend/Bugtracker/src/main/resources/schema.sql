@@ -1,0 +1,63 @@
+--DROP TABLE IF EXISTS USERS;
+--CREATE TABLE USERS (
+--  user_id INT NOT NULL AUTO_INCREMENT,
+--  name VARCHAR(30) NOT NULL,
+--  mobile bigint NOT NULL,
+--  email VARCHAR(50) NOT NULL,
+--  password VARCHAR(50) NOT NULL,
+--  date_activated TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--  role_id INT NOT NULL,
+--  PRIMARY KEY(user_id),
+--  FOREIGN KEY (role_id) REFERENCES ROLES (role_id)
+--);
+--
+--DROP TABLE IF EXISTS TICKETS;
+--CREATE TABLE TICKETS (
+--  ticket_id INT NOT NULL AUTO_INCREMENT,
+--  user_id INT NOT NULL,
+--  ticket_name VARCHAR(50) NOT NULL,
+--  ticket_description TEXT NOT NULL,
+--  assigned_to INT,
+--  priority ENUM ('LOW', 'MEDIUM', 'HIGH') NOT NULL,
+--  status ENUM ('OPEN', 'RESOLVED', 'CLOSED') NOT NULL,
+--  PRIMARY KEY(ticket_id),
+--  FOREIGN KEY (user_id) REFERENCES USERS (user_id),
+--  FOREIGN KEY (assigned_to) REFERENCES USERS (user_id)
+--);
+--
+--DROP TABLE IF EXISTS COMMENTS;
+--CREATE TABLE `COMMENTS` (
+--  comment_id INT NOT NULL AUTO_INCREMENT,
+--  user_id INT NOT NULL,
+--  ticket_id INT NOT NULL,
+--  created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--  comment TEXT NOT NULL,
+--  PRIMARY KEY(comment_id),
+--  FOREIGN KEY (user_id) REFERENCES USERS (user_id),
+--  FOREIGN KEY (ticket_id) REFERENCES TICKETS (ticket_id)
+--);
+--
+----DROP TABLE IF EXISTS ROLES;
+----CREATE TABLE `ROLES` (
+----  role_id INT NOT NULL AUTO_INCREMENT,
+----  role_type ENUM ('USER', 'ADMIN', 'DEVELOPER') NOT NULL,
+----  role_access ENUM ('USER_INTERFACE', 'DATABASE_HIGH_LEVEL', 'DATABASE_ALL_LEVELS') NOT NULL,
+----  role_description TEXT NOT NULL,
+----  restriction ENUM ('NO_RESTRICTION', 'SOME_RESTRICTION', 'HIGH_RESTRCITION') NOT NULL,
+----  PRIMARY KEY(role_id)
+----);
+--
+--CREATE TABLE `role` (
+--  `role_id` bigint(20) NOT NULL,
+--  `role_name` varchar(255) DEFAULT NULL,
+--  PRIMARY KEY (`role_id`)
+--) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+--
+--CREATE TABLE `users_roles` (
+--  `user_id` bigint(20) NOT NULL,
+--  `role_id` bigint(20) NOT NULL,
+--  KEY `FKt4v0rrweyk393bdgt107vdx0x` (`role_id`),
+--  KEY `FKgd3iendaoyh04b95ykqise6qh` (`user_id`),
+--  CONSTRAINT `FKgd3iendaoyh04b95ykqise6qh` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
+--  CONSTRAINT `FKt4v0rrweyk393bdgt107vdx0x` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`)
+--) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
